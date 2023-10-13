@@ -1,0 +1,291 @@
+*{
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+    font-family: 'Diphylleia', serif;
+}
+
+body{
+    height: 100%;
+    margin: 0;
+}
+
+#main_title{
+    display: flex;
+    justify-content: center;
+
+    background-color: red;
+    color: white;
+
+    margin-bottom: 30px;
+}
+
+footer{
+    height: 32px;
+    margin-top: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: red;
+    color: white;
+}
+/*미리보기 칸*/
+#preview{
+    display: flex;
+    column-gap: 8px;
+    
+    width: 100%;
+    height: 200px;
+
+    overflow: auto;
+    object-fit: cover;
+}
+
+#preview::-webkit-scrollbar{
+    height: 12px;
+}
+
+#preview::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+#preview::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color:lightgray;
+}
+
+#preview::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+}
+
+/*내비게이션*/
+#nav_list {
+    background-color: green;
+}
+
+#nav_list ul {
+    height: 60px;
+    margin-bottom: 0;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#nav_list ul li{
+    list-style: none;
+}
+
+#nav_list ul li a{
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+
+}
+
+#nav_list ul li a:hover{
+    text-decoration: underline;
+    color: yellow;
+}
+
+#nav_list ul li{
+    list-style: none;
+}
+
+/*프리뷰 제외 섹션 공통 적용 사항*/
+.images{
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.img_frame{
+    width: 100%;
+
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.img_title{
+    width: 100%;
+    padding-left:25px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin: 0;
+
+    background-color: rgb(100, 208, 100);
+    color: white;
+
+    position: sticky;
+    top: 0px;
+}
+
+.img_box{
+    margin: 2rem;
+
+    flex: 1;
+}
+
+/*이미지 애니메이션 효과*/
+#north_images .images:hover, .roma:hover{
+    transform: translateY(-0.8rem);
+    transition-duration: 0.3s;
+    transition-timing-function: linear;
+}
+
+
+/*로마(섹션1)*/
+#roma_images{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.roma{
+    width: 12rem;
+    height: 12rem;
+
+    object-fit: cover;
+    overflow: hidden;
+
+    justify-content: center;
+    align-items: center;
+
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+
+/*북탈리아(섹션2)*/
+#north_images{
+    display: flex;
+    justify-content: space-around;
+}
+
+#north_box1{
+    width: 42vw;
+    height: 42vw;
+}
+
+.north_box2{ 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    flex: 0 0 42vw;
+    gap: 0.6rem;
+}
+
+.north_box2 img{
+    height: 20vw;
+    width: 20vw;
+}
+
+@media(min-width:577px)and (max-width:767px){
+    #north_images{
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+
+    #north_box1{
+        width: 100%;
+        height: 42vw;
+    }
+
+    .north_box2{
+        justify-content: space-between;
+        width: 100%;
+    }    
+
+    .north_box2 img{
+        flex: 0 0 25vw;
+        height: 25vw;
+    }    
+
+    .north_box2 img:last-child{
+        height: 42vw;
+
+        flex-grow: 1;
+        flex-shrink: 1;    
+    }
+}
+
+@media(max-width:576px){
+    #north_images{
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+
+    #north_box1{
+        width: 100%;
+        height: 42vw;
+    }
+
+    .north_box2{ 
+        justify-content: space-between;
+        align-content: space-between;
+    }
+
+    .north_box2 img{
+        flex: 0 0 48%;
+        height: 16vh;
+    }        
+}
+
+
+/*남탈리아(섹션3)*/
+#south_images{
+    max-height: 500px;
+
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(4,1fr);
+    gap: 5px;
+}
+
+#south_images .images:nth-child(1){
+    grid-column: 1/3;
+    grid-row: 1/2;
+}
+#south_images .images:nth-child(2){
+    grid-column: 1/3;
+    grid-row: 2/3;
+}
+#south_images .images:nth-child(3){
+    grid-column: 3/5;
+    grid-row: 1/3;
+}
+#south_images .images:nth-child(4){
+    grid-column: 1/4;
+    grid-row: 3/5;
+}
+#south_images .images:nth-child(5){
+    grid-column: 4/5;
+    grid-row: 3/5;
+}
+
+/*상단 이동 버튼*/
+#top_btn{
+    width: 42px;
+    height: 42px;
+
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+}
+
+#top_btn a{
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0);
+}
