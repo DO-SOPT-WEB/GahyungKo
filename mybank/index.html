@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>돈쪽이</title>
+</head>
+<body>
+    <header>
+        <h1>돈쪽이의 가계부</h1>
+    </header>
+    <main>
+        <section id="asset">
+            <h3>나의 자산</h3>
+            <h1>52500</h1>
+            <div id="total_inout">
+                <span class="input" id="plus_ic">+</span><span class="input">122600</span>
+                &nbsp;
+                <span class="output" id="minus_ic">-</span><span class="output">70100</span>
+            </div>
+        </section>
+        <hr>
+        <section id="nav">
+            <nav id="nav_date">
+                <button>&lt;</button>
+                <h3>10월 11일</h3>
+                <button>&gt;</button>
+            </nav>
+            <div id="nav_list">
+                <h4>내역 리스트</h4>
+                <div id="ckbox_wrapper">
+                    <input type="checkbox" id="input_box" name="input_box" checked />
+                    <label for="input_box">수입</label>
+                    <input type="checkbox" id="output_box" name="output_box" checked />
+                    <label for="output_box">지출</label>
+                </div>
+            </div>
+        </section>
+        <hr>
+        <section id="list">
+            <article class="list_wrapper">
+                <h5>식비</h5>
+                <h4>GS25 코엑스점</h4>
+                <h5 class="output">-3100</h5>
+                <button class="list_btn">x</button>
+            </article>
+            <article class="list_wrapper">
+                <h5>취미</h5>
+                <h4>양재 화훼시장</h4>
+                <h5 class="output">-12000</h5>
+                <button class="list_btn">x</button>
+            </article>
+            <article class="list_wrapper">
+                <h5>알바</h5>
+                <h4>현대 백화점</h4>
+                <h5 class="input">+120000</h5>
+                <button class="list_btn">x</button>
+            </article>
+            <article class="list_wrapper">
+                <h5>식비</h5>
+                <h4>봉추찜닭 강남역점</h4>
+                <h5 class="output">-22000</h5>
+                <button class="list_btn">x</button>
+            </article>
+            <article class="list_wrapper">
+                <h5>쇼핑</h5>
+                <h4>지그재그</h4>
+                <h5 class="output">-24500</h5>
+                <button class="list_btn">x</button>
+            </article>
+            <article class="list_wrapper">
+                <h5>취미</h5>
+                <h4>동대문 악세사리 상가</h4>
+                <h5 class="output">-3500</h5>
+                <button class="list_btn">x</button>
+            </article>
+            <article class="list_wrapper">
+                <h5>식비</h5>
+                <h4>닭꼬치 트럭</h4>
+                <h5 class="output">-3500</h5>
+                <button class="list_btn">x</button>
+            </article>
+            <article class="list_wrapper">
+                <h5>송금</h5>
+                <h4>추석 기념 화투빵</h4>
+                <h5 class="input">+2600</h5>
+                <button class="list_btn">x</button>
+            </article>
+            <article class="list_wrapper">
+                <h5>취미</h5>
+                <h4>아트박스 스티커</h4>
+                <h5 class="output">-1500</h5>
+                <button class="list_btn">x</button>
+            </article>
+        </section>
+    </main>
+    <footer>
+        <button id="add_btn">+</button>
+    </footer>
+</body>
+</html>
