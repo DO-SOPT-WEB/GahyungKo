@@ -186,7 +186,7 @@ input[type="checkbox"]:checked+label{
     overflow: auto;
 }
 
-.list{
+li{
     height: 5vh;
     width: 60vw;
     margin: .6vh;
@@ -199,11 +199,11 @@ input[type="checkbox"]:checked+label{
     align-items: center;
 }
 
-.list span:nth-child(1){
+li span:nth-child(1){
     width: 3rem;
 }
 
-.list span:nth-child(2){
+li span:nth-child(2){
     flex: 1;
 
     overflow: hidden;
@@ -211,7 +211,7 @@ input[type="checkbox"]:checked+label{
     text-overflow: ellipsis;
 }
 
-.list .output, .list .input{
+li .output, li .input{
     width: 4rem;
     
     text-align: right;
