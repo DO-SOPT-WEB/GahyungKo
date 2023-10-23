@@ -12,7 +12,7 @@
     </header>
     <main>
         <section id="asset">
-            <span>나의 자산</span>
+            <h2>나의 자산</h2>
             <span class="total_asset"></span>
             <div class="total_inout">
                 <span class="input" id="plus_ic">+</span><span class="input">-</span>
@@ -29,7 +29,7 @@
             </nav>
             <div id="nav_list">
                 <span>내역 리스트</span>
-                <div id="ckbox_wrapper">
+                <div class="ckbox_wrapper">
                     <input type="checkbox" id="input_box" name="input_box" checked />
                     <label for="input_box">수입</label>
                     <input type="checkbox" id="output_box" name="output_box" checked />
@@ -43,6 +43,41 @@
             </ul>
         </section>
     </main>
+    <section class="modal_wrapper">
+        <h2>내역 추가</h2>
+        <div class="ckbox_wrapper">
+            <input type="checkbox" id="input_modalbox" name="modalbox" checked />
+            <label for="input_modalbox">수입</label>
+            <input type="checkbox" id="output_modalbox" name="modalbox" />
+            <label for="output_modalbox">지출</label>
+        </div>
+        <div class="modal_type" id="select_input">
+            <label for="category_input">카테고리</label>
+            <select name="category" id="category_input">
+                <option value="" selected disabled hidden>선택해주세요</option>
+                <option value="알바">알바</option>
+                <option value="용돈">용돈</option>
+            </select>
+        </div>
+        <div class="modal_type" id="select_output">    
+            <label for="category_output">카테고리</label>
+            <select name="category" id="category_output">
+                <option value="" selected disabled hidden>선택해주세요</option>
+                <option value="food">음식</option>
+                <option value="shop">쇼핑</option>
+            </select>
+        </div>
+        <div class="modal_type">
+            <label for="amount">금액</label>
+            <input type="number" name="amount" id="amount"/>
+        </div>
+        <div class="modal_type">
+            <label for="title">내역</label>
+            <input type="text" name="title" id="title"/>
+        </div>
+        <button type="button" id="save">저장하기</button>
+        <button type="button" id="close">닫기</button>
+    </section>
     <footer>
         <button type="button" id="add_btn">+</button>
     </footer>

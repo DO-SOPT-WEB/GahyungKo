@@ -5,7 +5,8 @@
     /*color*/
     --main-color: #bedaba;
     --sub-color01: #F6F6F6;
-    --point-color: #fdcfcf;
+    --sub-color02: #fdcfcf;
+    --sub-color03: #f7f7e1;
 }
 
 html {
@@ -85,8 +86,13 @@ hr{
     margin: 2vh;
 }
 
+#asset h2{
+    font-size: 1.2rem;
+}
+
 #asset > span:nth-child(2){
     font-size: 1.8rem;
+    font-weight: 600;
 }
 
 .total_inout{
@@ -130,7 +136,7 @@ hr{
 
 #nav_date button{
     color: var(--sub-color01);
-    background-color: var(--point-color);
+    background-color: var(--sub-color02);
     border: none;
     border-radius: 12%;
     
@@ -147,9 +153,9 @@ hr{
     align-items: center;
 }
 
-#ckbox_wrapper{
+.ckbox_wrapper{
     display: inline-flex;
-    gap: 0.6rem;
+    gap: 1rem;
 }
 
 input[type="checkbox"]{
@@ -161,17 +167,17 @@ input[type="checkbox"]+label{
     justify-content: center;
     align-items: center;
 
-    width: 8vw;
+    width: 10vw;
     height: 1.3rem;
 
     background-color: var(--sub-color01);
-    color: var(--point-color);
+    color: var(--sub-color02);
     border-radius: 12%;
-    outline: .15rem solid var(--point-color);
+    outline: .15rem solid var(--sub-color02);
 }
 
 input[type="checkbox"]:checked+label{
-    background-color: var(--point-color);
+    background-color: var(--sub-color02);
     color: var(--sub-color01);
 }
 
@@ -226,6 +232,77 @@ li .output, li .input{
     background-color: transparent;
 }
 
+/*모달*/
+.modal_wrapper{
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+
+    width: 100vw;
+    padding: 2.5rem;
+
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+
+    background-color: var(--main-color);
+    border-radius: 2rem 2rem 0 0 / 2.5rem 2.5rem  0 0;
+}
+
+.modal_wrapper h2{
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--sub-color01);
+
+    margin-bottom: 1.2rem;
+}
+
+.modal_type{
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+
+    width: 100%;
+}
+
+.modal_type label{
+    font-size: 0.8rem;
+}
+
+.modal_type select, .modal_type input{
+    height: 2rem;
+
+    border: none;
+    background-color: var(--sub-color03);
+}
+
+#select_output{
+    display: none;
+}
+
+.modal_wrapper button{
+    width: 100%;
+
+    border: none;
+}
+
+#save{
+    height: 2.15rem;
+
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: var(--sub-color02);
+    color: var(--sub-color01);
+}
+
+#close{
+    height: 1.75rem;
+
+    font-size: 0.8rem;
+    background-color: var(--sub-color01);
+}
+
 /*하단 버튼*/
 footer{
     width: 100vw;
@@ -236,14 +313,14 @@ footer{
     position: fixed;
     bottom: 0;
 
-    background-color: var(--sub-color01);
+    background-color: var(--sub-color03);
 }
 
 #add_btn{
     width: 4rem;
     font-size: 2rem;
     border: none;
-    color: var(--sub-color01);
-    background-color: var(--point-color);
+    color: var(--sub-color03);
+    background-color: var(--sub-color02);
     border-radius: 1rem;
 }
