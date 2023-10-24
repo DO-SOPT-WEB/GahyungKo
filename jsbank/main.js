@@ -57,11 +57,13 @@ outputBox.addEventListener('change', filtering);
 /*리스트 추가 및 삭제 함수*/
 function addList(element){
     const list = document.createElement("li");
+    
     element.type === "input"
     ? list.className = "list_input"
     : list.className = "list_output";
 
-    const amount = element.type === "input" ? `+${element.amount}` : `-${element.amount}`;
+    let amount = element.amount.toLocaleString();
+    amount = element.type === "input" ? `+${amount}` : `-${amount}`;
 
     list.innerHTML = `
         <span>${element.category}</span>
@@ -73,6 +75,7 @@ function addList(element){
         }">${amount}</span>
         <button type="button" class="list_btn">x</button>    
     `;
+
     list.children[3].addEventListener('click', deleteList);
     
     //자산 계산
@@ -82,9 +85,9 @@ function addList(element){
 
     tempAsset = tempInput-tempOutput;
 
-    totalInput.innerHTML = `${tempInput}`; 
-    totalOutput.innerHTML = `${tempOutput}`;
-    totalAsset.innerHTML = `${tempAsset}`;
+    totalInput.innerHTML = `${tempInput.toLocaleString()}`; 
+    totalOutput.innerHTML = `${tempOutput.toLocaleString()}`;
+    totalAsset.innerHTML = `${tempAsset.toLocaleString()}`;
 
     listTotal.appendChild(list);
 }
@@ -107,23 +110,30 @@ function deleteList(event){
 
     tempAsset = tempInput-tempOutput;
 
-    totalInput.innerHTML = `${tempInput}`; 
-    totalOutput.innerHTML = `${tempOutput}`;
-    totalAsset.innerHTML = `${tempAsset}`;
+    totalInput.innerHTML = `${tempInput.toLocaleString()}`; 
+    totalOutput.innerHTML = `${tempOutput.toLocaleString()}`;
+    totalAsset.innerHTML = `${tempAsset.toLocaleString()}`;
 
     motherList.remove();
 }
 
-/*모달 여닫는 버튼 추가*/
-const modal_wrapper =document.querySelector(".modal_wrapper");
+/*모달 여닫는 버튼 추가(애니메이션 효과 포함)*/
+const modalWrapper =document.querySelector(".modal_wrapper");
 const modalBtn = document.getElementById("add_btn");
-const closeBtn = document.getElementById("close")
+const closeBtn = document.getElementById("close");
 
 modalBtn.onclick = () => {
-    modal_wrapper.style.display = "flex";
+    modalWrapper.style.bottom = "0";
+
+    const backgroundElement = document.createElement("div");
+    backgroundElement.classList.add("dark");
+
+    modalWrapper.before(backgroundElement);
 };
 closeBtn.onclick = () => {
-    modal_wrapper.style.display = "none";
+    modalWrapper.style.bottom = "-40rem";
+
+    document.querySelector(".dark").remove();
 };
 
 /*모달 체크 박스 설정 및 카테고리 연동*/
@@ -161,16 +171,36 @@ function checkOnly(e){
 modalInbox.addEventListener('click', checkOnly);
 modalOutbox.addEventListener('click', checkOnly);
 
-/*리스트 새로 저장하기*/
-const saveBtn = document.getElementById("save");
-
+/*금액 칸에 숫자만 입력 받기*/
 const newAmount = document.getElementById("amount");
 const newTitle = document.getElementById("title");
+
+function onlyNum(event){
+    let val = event.target.value;
+    val = val.replace(/,/g,"");
+
+    if(val.match(/[^0-9]/g)){
+        event.target.value = val.replace(/[^0-9]/g,"");
+        alert('숫자만 입력해주세요.');
+        return false;
+    }
+    
+    event.target.value = parseInt(val).toLocaleString();
+}
+newAmount.addEventListener('input',onlyNum);
+
+/*리스트 새로 저장하기*/
+const saveBtn = document.getElementById("save");
 
 function newList(){
     let tempCategory = newCategory.value;
     let tempAmount = newAmount.value;
     let tempTitle = newTitle.value;
+    
+    if(tempCategory || tempAmount || tempTitle === ""){
+        alert("모든 항목을 입력하세요.");
+        return false;
+    }
 
     let newObject = {
         category: tempCategory,

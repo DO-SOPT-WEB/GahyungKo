@@ -21,7 +21,6 @@ function outHover(e){
 //버튼 변화
 const topBtn = document.getElementById("top_btn");
 
-//window에 이벤트리스너 붙이면 작동, 근데 왜 topbtn 붙이면 작동 X?
 //scroll이 작동하는 건 window이기 때문!(event 발생하는 곳)
 window.addEventListener('scroll', function(){
     //전체 Y스크롤 값으로 나눔
