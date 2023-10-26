@@ -17,6 +17,9 @@ function outHover(e){
     e.target.children[0].style.filter = "brightness(1)";
     e.target.children[1].style.display ="none";
     e.target.children[2].style.display ="none";
+
+    if(e.target.lastChild.className === "read_more")
+        e.target.lastChild.remove();
 }
 
 //버튼 변화
@@ -47,3 +50,15 @@ function loadText(e){
     text.style.display = "block";
     e.target.style.display = "none";
 }
+
+//스크롤 이동
+const previewImg = document.querySelector(".preview_images");
+const leftArrow = document.querySelector(".preview button:first-child");
+const rightArrow = document.querySelector(".preview button:last-child");
+
+leftArrow.onclick = () => {
+    previewImg.scrollLeft -= 2488;
+};
+rightArrow.onclick = () => { 
+    previewImg.scrollLeft += 2488;
+};
