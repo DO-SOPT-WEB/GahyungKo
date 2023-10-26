@@ -1,4 +1,5 @@
 export const INIT_BALANCE = 0;
+
 export const HISTORY_LIST = [
     {   
         category: "음식",
@@ -23,5 +24,24 @@ export const HISTORY_LIST = [
         title: "지그재그",
         type: "output",
         amount: 24500, 
+    }
+];
+
+export const HISTORY_CATEGORY = [
+    {
+        type: "input",
+        name: "알바"
+    },
+    {
+        type: "input",
+        name: "용돈"
+    },
+    {
+        type: "output",
+        name: "음식"
+    },
+    {
+        type: "output",
+        name: "쇼핑"
     }
 ];
