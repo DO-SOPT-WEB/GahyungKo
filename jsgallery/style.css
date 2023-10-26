@@ -141,7 +141,6 @@ footer{
     transform: translateY(-0.8rem);
 }
 
-
 /*로마(섹션1)*/
 #roma_images{
     display: flex;
@@ -164,7 +163,7 @@ footer{
     transition-timing-function: linear;
 }
 
-.roma_box span{
+.roma_box div{
     position: absolute;
 
     color: white;
@@ -178,11 +177,32 @@ footer{
     font-size: 1.4rem;
 }
 
-.photo_info{
+.photo_info {
+    width: 80%;
     top: 4rem;
-    padding: 1rem;
 
+    display: none;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
     font-size: 0.8rem;
+}
+
+.read_more {
+    position: absolute;
+    bottom: 1.8rem;
+    height: 1.5rem;
+
+    background-color: lightgray;
+    color: black;
+    border: none;
+    border-radius: 0.8rem;
+}
+  
+.roma_box:hover .read_more {
+    display: block;
 }
 
 .roma{
@@ -195,7 +215,6 @@ footer{
     object-fit: cover;
     overflow: hidden;
 }
-
 
 /*북탈리아(섹션2)*/
 #north_images{

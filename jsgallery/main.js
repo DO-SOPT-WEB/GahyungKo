@@ -9,7 +9,8 @@ for (var i = 0; i < hoverTarget.length; i++) {
 function onHover(e){
     e.target.children[0].style.filter = "brightness(0.5)"
     e.target.children[1].style.display ="inline";
-    e.target.children[2].style.display ="inline";
+    e.target.children[2].style.display ="-webkit-box";
+    moreText(e.target.children[2]);
 }
 
 function outHover(e){
@@ -27,3 +28,22 @@ window.addEventListener('scroll', function(){
     topBtn.style.opacity = window.scrollY / 3000;
 });
 
+//그림 설명 더보기
+function moreText(e) {
+    const moreBtn = document.createElement("button");
+    moreBtn.innerHTML = "더보기";
+    moreBtn.className = "read_more";
+    moreBtn.addEventListener('click', loadText);
+
+    if (e.clientHeight < e.scrollHeight){
+        e.parentNode.appendChild(moreBtn);
+    }
+};
+
+function loadText(e){
+    let text = e.target.parentNode.children[2];
+
+    text.style.overflow = "visible";
+    text.style.display = "block";
+    e.target.style.display = "none";
+}
