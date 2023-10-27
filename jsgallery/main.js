@@ -18,8 +18,10 @@ function outHover(e){
     e.target.children[1].style.display ="none";
     e.target.children[2].style.display ="none";
 
-    if(e.target.lastChild.className === "read_more")
+    if(e.target.lastChild.className === "read_more"){
         e.target.lastChild.remove();
+        unloadText(e.target.children[2]);
+    }
 }
 
 //버튼 변화
@@ -49,6 +51,11 @@ function loadText(e){
     text.style.overflow = "visible";
     text.style.display = "block";
     e.target.style.display = "none";
+}
+
+function unloadText(e){
+    e.style.overflow = "hidden";
+    e.style.display = "ellipsis";
 }
 
 //스크롤 이동

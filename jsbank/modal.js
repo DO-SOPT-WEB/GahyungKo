@@ -1,3 +1,5 @@
+import {addList} from './main.js';
+
 /*모달 여닫는 버튼 추가(애니메이션 효과 포함)*/
 const modalWrapper =document.querySelector(".modal_wrapper");
 const modalBtn = document.getElementById("add_btn");
@@ -24,7 +26,7 @@ const modalInput = document.getElementById("select_input");
 const modalOutput = document.getElementById("select_output");
 
 let newCategory = document.getElementById("category_input");
-let tempType = null;
+let tempType = "input";
 
 function checkOnly(e){
     if(e.target === modalInbox){
@@ -61,12 +63,13 @@ function onlyNum(event){
     val = val.replace(/,/g,"");
 
     if(val.match(/[^0-9]/g)){
-        event.target.value = val.replace(/[^0-9]/g,"");
+        val = val.replace(/[^0-9]/g,"");
         alert('숫자만 입력해주세요.');
-        return false;
     }
-    
-    event.target.value = parseInt(val).toLocaleString();
+
+    /[0-9]/g.test(event.target.value) === false
+    ? event.target.value = ""
+    :event.target.value = parseInt(val).toLocaleString();
 }
 newAmount.addEventListener('input',onlyNum);
 
@@ -78,21 +81,21 @@ function newList(){
     let tempAmount = newAmount.value;
     let tempTitle = newTitle.value;
     
-    if(tempCategory || tempAmount || tempTitle === ""){
+    if(tempCategory === ''|| tempAmount === ''|| tempTitle === ''){
         alert("모든 항목을 입력하세요.");
-        return false;
     }
+    else{    
+        let newObject = {
+            category: tempCategory,
+            title: tempTitle,
+            type: tempType,
+            amount: parseInt(tempAmount.replace(/,/g,""))
+        }
+        
+        addList(newObject);
 
-    let newObject = {
-        category: tempCategory,
-        title: tempTitle,
-        type: tempType,
-        amount: parseInt(tempAmount), 
+        alert("새로운 내역 저장 완료!");
     }
-
-    addList(newObject);
-
-    alert("새로운 내역 저장 완료!");
 }
 
 saveBtn.addEventListener('click', newList);

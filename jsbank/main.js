@@ -55,7 +55,7 @@ inputBox.addEventListener('change', filtering);
 outputBox.addEventListener('change', filtering);
 
 /*리스트 추가 함수*/
-function addList(element){
+export function addList(element){
     const list = document.createElement("li");
     
     element.type === "input"
