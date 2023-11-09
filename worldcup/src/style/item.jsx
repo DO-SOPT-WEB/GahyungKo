@@ -1,18 +1,18 @@
 import styled from "styled-components";
 
 export const Question = styled.h1`
-    height: 2.5rem;
-    width: 50vw;
+    height: 3rem;
+    width: 45vw;
+    padding-bottom: 0.2rem;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    background-color: green;
-    color: white;
-    border-radius: 0.3rem;
-    font-size: 1.225rem;
-    font-weight: 600;
+    background-color: ${({ theme }) => theme.colors.green};
+    color: ${({ theme }) => theme.colors.white};
+    border-radius: 0.5rem;
+    ${({ theme }) => theme.fonts.subtitle }
 `;
 
 export const ChoiceBoxWrapper = styled.div`
@@ -27,14 +27,15 @@ export const ChoiceBoxWrapper = styled.div`
 export const ChoiceBox = styled.button`
     min-width: 10rem;
     min-height: 10rem;
-    width: 15vw;
-    height: 15vw;
+    width: 12vw;
+    height: 12vw;
     padding: 0.5rem;
 
-    background-color: white;
-    border: 0.25rem solid red;
+    background-color: ${({ theme }) => theme.colors.white};
+    color: ${({ theme }) => theme.colors.red};
+    font-size: 1.2rem;
+    border: 0.4rem solid ${({ theme }) => theme.colors.red};
     border-radius: 1rem;
-    font-size: 1rem;
 
     display: flex;
     justify-content: center;
@@ -44,8 +45,8 @@ export const ChoiceBox = styled.button`
 
     &:hover,
     &:focus{
-        background-color: red;
-        color: white;
+        background-color: ${({ theme }) => theme.colors.red};
+        color: ${({ theme }) => theme.colors.white};
     }
 `;
 
@@ -62,20 +63,20 @@ export const Button = styled.button`
     justify-content: center;
     align-items: center;
 
-    background-color: green;
-    color: white;
+    background-color: ${({ theme }) => theme.colors.green};
+    color: ${({ theme }) => theme.colors.white};
     border-radius: 0.3rem;
 `;
 
 export const MoveButton = styled(Button)`
     &:hover{
-        background-color: white;
-        color: green;
+        background-color: ${({ theme }) => theme.colors.white};
+        color: ${({ theme }) => theme.colors.green};
         font-weight: 600;
     }
     &:disabled{
         background-color: lightgray;
-        color: black;
+        color: ${({ theme }) => theme.colors.darkred};
         cursor: not-allowed;
     }
 `;
@@ -89,10 +90,9 @@ export const Answer = styled.h2`
     align-items: center;
     justify-content: center;
 
-    color: red;
-    font-size: 1.4rem;
-    font-weight: 600;
-`;
+    color: ${({ theme }) => theme.colors.red};
+    ${({ theme }) => theme.fonts.subtitle }
+    `;
 
 export const AnswerImg = styled.img`
     width: 30vh;

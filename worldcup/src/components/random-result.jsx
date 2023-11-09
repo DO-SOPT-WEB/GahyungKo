@@ -13,11 +13,11 @@ function RandomResult(){
   
     return initial === false 
     ?(
-      <Stage>
-        <Question>크리스마스에 이거 하면 되겠다!</Question>
-          <AnswerImg src={link}></AnswerImg>
-          <Answer>🌟{description}❄️</Answer>
-          <Button onClick={ () => {setInitial(true)} }>다시하기</Button>
+        <Stage>
+            <Question>크리스마스에 이거 하면 되겠다!</Question>
+            <AnswerImg src={link}></AnswerImg>
+            <Answer>🌟{description}❄️</Answer>
+            <Button onClick={ () => {setInitial(true)} }>다시하기</Button>
         </Stage>
     )
     : <Random></Random>;  

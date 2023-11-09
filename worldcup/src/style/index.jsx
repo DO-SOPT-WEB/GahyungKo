@@ -47,6 +47,7 @@ export const GlobalStyle = createGlobalStyle`
 
         background-image: url("src/assets/orange.jpg");
         background-size: cover;
+        ${({ theme }) => theme.fonts.content };
     }
 
     #root {
@@ -56,26 +57,27 @@ export const GlobalStyle = createGlobalStyle`
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 5rem;
+        gap: 3rem;
     }
 `;
 
 export const Header = styled.header`
     width: 100%;
-    height: 3.3rem;
-    padding: 0.9rem 0;
+    height: 5rem;
+    padding: 1rem 0;
     text-align: center;
     
-    background-color: white;
-    font-size: 1.5rem;
-    font-weight: 600;
+    background-color: ${({ theme }) => theme.colors.white };
+    color: ${({ theme }) => theme.colors.green };
+    ${({ theme }) => theme.fonts.title }
 `;
 
 export const Container = styled.main`
-    width: 80%;
+    width: 70%;
     height: 75%;
     
-    background-color: rgba(255,255,255,0.9);
+    background-color: ${({ theme }) => theme.colors.beige};
+    border-radius: 2rem;
 
     display: flex;
     flex-direction: column;
@@ -91,5 +93,4 @@ export const Stage = styled.section`
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    gap: 1.2rem;
 `;

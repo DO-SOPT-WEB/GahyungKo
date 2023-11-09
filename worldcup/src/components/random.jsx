@@ -2,6 +2,7 @@ import { Stage } from "../style/index";
 import { Question, ChoiceBox, ChoiceBoxWrapper, Button } from "../style/item";
 import { useState, useEffect } from "react";
 import RandomResult from "./random-result";
+import styled, { keyframes } from 'styled-components';
 
 function CountDown() {
     function Timer(){
@@ -12,15 +13,11 @@ function CountDown() {
         }, [time]);
     
         return time
-        ? <Stage>{time}</Stage>
+        ? <Stage><NumEffect>{time}</NumEffect></Stage>
         : <RandomResult></RandomResult> ;
     }
 
-    return (
-        <Stage>
-            {Timer()}
-        </Stage>
-    );
+    return (<>{Timer()}</>);
 }
 
 function Random(){
@@ -42,3 +39,18 @@ function Random(){
 }
 
 export default Random;
+
+/* 카운트다운 애니메이션 스타일 */
+const blink = keyframes`
+    50% {
+        opacity: 0;
+    }
+`;
+
+const NumEffect = styled.span`
+    font-size: 5.2rem;
+    color: white;
+    text-shadow: 3.2px 3.2px 0px ${({ theme }) => theme.colors.red}, 6.4px 6.4px 0px ${({ theme }) => theme.colors.darkRed};;
+
+    animation: ${blink} 1.025s step-end infinite;
+`;
