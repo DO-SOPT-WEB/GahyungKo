@@ -11,7 +11,7 @@ export const Question = styled.h1`
     background-color: green;
     color: white;
     border-radius: 0.3rem;
-    font-size: 1.2rem;
+    font-size: 1.225rem;
     font-weight: 600;
 `;
 
@@ -83,13 +83,14 @@ export const MoveButton = styled(Button)`
 export const Answer = styled.h2`
     height: 2.5rem;
     width: 50vw;
+    padding: 0.5rem;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    color: black;
-    font-size: 1.8rem;
+    color: red;
+    font-size: 1.4rem;
     font-weight: 600;
 `;
 
