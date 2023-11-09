@@ -74,7 +74,6 @@ export const Header = styled.header`
 export const Container = styled.main`
     width: 80%;
     height: 75%;
-    padding-top: 3.5rem;
     
     background-color: rgba(255,255,255,0.9);
 
@@ -85,10 +84,12 @@ export const Container = styled.main`
 `;
 
 export const Stage = styled.section`
-    height: 90%;
+    height: 100%;
+    padding: 2rem 0;
 
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
+    gap: 1.2rem;
 `;

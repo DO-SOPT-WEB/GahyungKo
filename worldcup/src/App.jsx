@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Container, GlobalStyle, Header, Stage } from './style/index.jsx';
 import { ChoiceBox, ChoiceBoxWrapper, Question } from './style/item.jsx';
 import { Choice } from "./components/tournament.jsx";
+import Random from "./components/random.jsx";
 
 function App() {
   const [currentStage, setCurrentStage] = useState("");

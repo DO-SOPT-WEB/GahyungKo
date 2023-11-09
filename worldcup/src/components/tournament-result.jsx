@@ -4,7 +4,7 @@ import { RESULT_LIST } from "../assets/result-item";
 import { Choice } from "./tournament";
 import { useState } from "react";
 
-function Result({page}) {
+function ChoiceResult({page}) {
   const [initial, setInitial] = useState(false);
   const { count, indexList: [firstIndex, secondIndex, thirdIndex] } = page;
   
@@ -27,4 +27,4 @@ function Result({page}) {
   : <Choice></Choice>;
 }
 
-export default Result;
+export default ChoiceResult;

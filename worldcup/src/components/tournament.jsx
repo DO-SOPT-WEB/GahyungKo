@@ -1,7 +1,7 @@
 import { useEffect, useReducer, useState } from "react";
 import { Stage } from "../style";
 import { ChoiceBox, ChoiceBoxWrapper, ButtonWrapper, MoveButton, Question, Button } from "../style/item";
-import Result from "./result";
+import ChoiceResult from "./tournament-result";
 
 function reducer(state, action){
     switch (action.type){
@@ -23,18 +23,6 @@ export const Choice = () => {
     const [page, dispatch] = useReducer(reducer, { count: 0, indexList: [] });
     const [answer, setAnwer] = useState("");
 
-    const active = () => {
-        if(click === false)
-            return (<MoveButton onClick={() => {dispatch({ type: "next", add: answer })}} disabled>{next}</MoveButton>);
-        else    
-            return (<MoveButton onClick={() => {dispatch({ type: "next", add: answer })}}>{next}</MoveButton>);
-    }
-
-    const selectAnswer = (e) => {
-        setClick(true);
-        setAnwer(e.target.innerText);
-    }
-
     useEffect(() => {
         setClick(false); 
 
@@ -42,14 +30,17 @@ export const Choice = () => {
             case 0:
                 setTitle("원하는 추천 방식을 골라줘!");
                 setList(["취향대로 추천"]);
+                setNext("시작!");
                 break;
             case 1:
                 setTitle("누구랑 놀거야?");
                 setList(["가족들이랑 놀래", "친구들이나 애인이랑 놀래", "웨비들💛이랑 놀래"]);
+                setNext("다음으로");
                 break;
             case 2:
                 setTitle("뭐가 제일 중요해?");
                 setList(["맛있는 거 먹기", "크리스마스 분위기 느끼기", "신나게 놀기"]);
+                setNext("다음으로");
                 break;
             case 3:
                 setTitle("어디가 좋아?");
@@ -60,24 +51,23 @@ export const Choice = () => {
     }, [page.count]);
 
     function ButtonType(num){
-        if(num === 0){
-            return(
-            <ButtonWrapper>
-                <Button onClick={() => {dispatch({ type: "next" })}}>시작!</Button>
-            </ButtonWrapper>);
-        }
-        else{
-            return(
-            <ButtonWrapper>
-                <MoveButton onClick={() => {dispatch({ type: "previous" })}}>이전으로</MoveButton>
-                {active()}
-            </ButtonWrapper>
-            );
-        }
+        return num
+        ? <ButtonWrapper>
+            <MoveButton onClick={() => {dispatch({ type: "previous" })}}>이전으로</MoveButton>
+            <MoveButton onClick={() => {dispatch({ type: "next", add: answer })}} disabled={!click}>{next}</MoveButton>
+        </ButtonWrapper>
+        : <ButtonWrapper>
+            <Button onClick={() => {dispatch({ type: "next" })}}>{next}</Button>
+        </ButtonWrapper>
+    }
+
+    const selectAnswer = (e) => {
+        setClick(true);
+        setAnwer(e.target.innerText);
     }
 
     return page.count === 4
-    ? (<Result page={page}></Result>)
+    ? (<ChoiceResult page={page}></ChoiceResult>)
     :(
         <Stage>
             <Question>{title}</Question>
