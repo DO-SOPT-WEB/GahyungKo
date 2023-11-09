@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Container,  Header, Stage } from './style/index.jsx';
-import { ChoiceBox, ChoiceBoxWrapper, Question } from './style/item.jsx';
+import { ChoiceBox, ChoiceBoxWrapper, Question, ResetBtn } from './style/item.jsx';
 import { Choice } from "./components/tournament.jsx";
 import Random from "./components/random.jsx";
 
@@ -37,13 +37,9 @@ function App() {
   const resetBtn = () => {
     if (currentStage !== "") {
       return (
-        <ResetBtn
-          type="button"
-          onClick={() => {
-            setCurrentStage("");
-          }}
-        >
-          다시 시작
+        <ResetBtn type="button"
+          onClick={() => {setCurrentStage("");}}>
+          처음으로
         </ResetBtn>
       );
     }
@@ -51,7 +47,7 @@ function App() {
 
   return (
     <>
-      <Header>🎅 크리스마스에 뭐 할래? 🎄</Header>
+      <Header>🎅 크리스마스에 뭐 할래? 🎄 {resetBtn()} </Header>
       <Container>
         {render()}
       </Container>

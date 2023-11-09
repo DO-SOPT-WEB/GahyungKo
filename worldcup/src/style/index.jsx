@@ -65,7 +65,10 @@ export const Header = styled.header`
     width: 100%;
     height: 5rem;
     padding: 1rem 0;
-    text-align: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
     background-color: ${({ theme }) => theme.colors.white };
     color: ${({ theme }) => theme.colors.green };
@@ -86,8 +89,10 @@ export const Container = styled.main`
 `;
 
 export const Stage = styled.section`
+    width: 100%;
     height: 100%;
     padding: 2rem 0;
+    position: relative;
 
     display: flex;
     flex-direction: column;

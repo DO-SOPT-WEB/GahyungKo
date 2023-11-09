@@ -1,31 +1,29 @@
 import { useEffect, useReducer, useState } from "react";
 import { Stage } from "../style";
-import { ChoiceBox, ChoiceBoxWrapper, ButtonWrapper, MoveButton, Question, Button } from "../style/item";
+import { ChoiceBox, ChoiceBoxWrapper, ButtonWrapper, MoveButton, Question, Button, Process } from "../style/item";
 import ChoiceResult from "./tournament-result";
 
 function reducer(state, action){
     switch (action.type){
         case "previous":
             return { count: state.count - 1,
-                indexList: state.indexList.splice(state.indexList.length -1) };
+                indexList: state.indexList.splice(state.indexList.length -1)};
         case "next":
             return state.count === 0
-                ?{ count: state.count + 1, indexList: [] }
-                :{ count: state.count + 1, indexList: [...state.indexList, action.add] };
+                ?{ count: state.count + 1, indexList: []}
+                :{ count: state.count + 1, indexList: [...state.indexList, action.add]};
     }
 }
 
 export const Choice = () => {
-    const [click, setClick] = useState(false);
     const [title, setTitle] = useState("원하는 추천 방식을 골라줘!");
     const [list, setList] = useState(["취향대로 추천"]);
     const [next, setNext] = useState("다음으로");
-    const [page, dispatch] = useReducer(reducer, { count: 0, indexList: [] });
+    const [select, setSelect] = useState(false);
+    const [page, dispatch] = useReducer(reducer, { count: 0, indexList: []});
     const [answer, setAnwer] = useState("");
 
     useEffect(() => {
-        setClick(false); 
-
         switch (page.count) {
             case 0:
                 setTitle("원하는 추천 방식을 골라줘!");
@@ -50,19 +48,26 @@ export const Choice = () => {
         }   
     }, [page.count]);
 
-    function ButtonType(num){
+    function buttonType(num){
         return num
         ? <ButtonWrapper>
-            <MoveButton onClick={() => {dispatch({ type: "previous" })}}>이전으로</MoveButton>
-            <MoveButton onClick={() => {dispatch({ type: "next", add: answer })}} disabled={!click}>{next}</MoveButton>
+            <MoveButton onClick={() => {dispatch({ type: "previous" }); setSelect(true);}}>
+                이전으로
+            </MoveButton>
+            <MoveButton onClick={() => {dispatch({ type: "next", add: answer }); setSelect(false);}} 
+            disabled={!select}>
+                {next}
+            </MoveButton>
         </ButtonWrapper>
         : <ButtonWrapper>
-            <Button onClick={() => {dispatch({ type: "next" })}}>{next}</Button>
+            <Button onClick={() => {dispatch({ type: "next" }); setSelect(false);}}>
+                {next}
+            </Button>
         </ButtonWrapper>
     }
 
     const selectAnswer = (e) => {
-        setClick(true);
+        setSelect(true);
         setAnwer(e.target.innerText);
     }
 
@@ -71,14 +76,20 @@ export const Choice = () => {
     :(
         <Stage>
             <Question>{title}</Question>
+            <Process> 
+                {page.count? page.count+"/3" : ""}
+            </Process>
             <ChoiceBoxWrapper>
                 {list.map((item) => (
-                    <ChoiceBox key={item} onClick={(e) => {{selectAnswer(e)}}}>
+                    <ChoiceBox key={item} onClick={(e) => {{selectAnswer(e)}}}
+                    className={answer === item ? "active" : null}>
+                        {console.log(item)}
+                        {console.log(answer)}
                         {item}
                     </ChoiceBox>
                 ))}
             </ChoiceBoxWrapper>
-            {ButtonType(page.count)}
+            {buttonType(page.count)}
         </Stage>
     );
  }

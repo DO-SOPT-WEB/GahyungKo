@@ -44,7 +44,8 @@ export const ChoiceBox = styled.button`
     word-break: keep-all;
 
     &:hover,
-    &:focus{
+    &:focus,
+    &.active{
         background-color: ${({ theme }) => theme.colors.red};
         color: ${({ theme }) => theme.colors.white};
     }
@@ -100,4 +101,19 @@ export const AnswerImg = styled.img`
 
     object-fit: cover;
     overflow: hidden;
+`;
+
+export const ResetBtn = styled(Button)`
+    position: fixed;
+    right: 5rem;
+
+    ${({ theme }) => theme.fonts.content }
+`;
+
+export const Process = styled.span`
+    position: absolute;
+    top: 20vh;
+    right: 20vw;
+
+    color: ${({ theme }) => theme.colors.green};
 `;
