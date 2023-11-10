@@ -2,9 +2,7 @@ import { useEffect, useReducer, useState } from "react";
 import { Stage } from "../style";
 import { ChoiceBox, ChoiceBoxWrapper, ButtonWrapper, MoveButton, Button, Process } from "../style/item";
 import ChoiceResult from "./tournament-result";
-//import { List } from "./tournament-content";
 import { Title } from "./tournament-title";
-//import ButtonType from "./tournament-button";
 
 function reducer(state, action){
     switch (action.type){
@@ -85,7 +83,6 @@ export const Choice = () => {
                 </ChoiceBox>
             ))}
             </ChoiceBoxWrapper>
-            {/* <ButtonType pageInfo={page}></ButtonType> */}
             {buttonType(page.count)}
         </Stage>
     );

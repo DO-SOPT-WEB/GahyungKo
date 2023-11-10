@@ -4,7 +4,6 @@ import { Button, ButtonWrapper, MoveButton } from "../style/item";
 
 function ButtonType({pageInfo}){
     const {count, indexList, active, answer} = pageInfo;
-    const [page, dispatch] = useReducer(reducer, { count: count, indexList: indexList, active: active, answer: answer });
 
     return count
     ? <ButtonWrapper>
@@ -12,8 +11,8 @@ function ButtonType({pageInfo}){
             이전으로
         </MoveButton>
         <MoveButton onClick={() => {dispatch({ type: "next" })}} 
-        disabled={!page.active}>
-            {page.count===3 ? "결과보기" : "다음으로"}
+        disabled={!active}>
+            {count===3 ? "결과보기" : "다음으로"}
         </MoveButton>
     </ButtonWrapper>
     : <ButtonWrapper>
