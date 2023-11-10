@@ -1,9 +1,7 @@
-import reducer from "./tournament";
-import { useReducer } from "react";
 import { Button, ButtonWrapper, MoveButton } from "../style/item";
 
 function ButtonType({pageInfo}){
-    const {count, indexList, active, answer} = pageInfo;
+    const {count, active, dispatch} = pageInfo;
 
     return count
     ? <ButtonWrapper>
@@ -12,7 +10,7 @@ function ButtonType({pageInfo}){
         </MoveButton>
         <MoveButton onClick={() => {dispatch({ type: "next" })}} 
         disabled={!active}>
-            {count===3 ? "결과보기" : "다음으로"}
+            {count === 3 ? "결과보기" : "다음으로"}
         </MoveButton>
     </ButtonWrapper>
     : <ButtonWrapper>

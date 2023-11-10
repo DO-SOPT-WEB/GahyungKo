@@ -1,72 +1,37 @@
-import { useEffect, useReducer, useState } from "react";
+import { useReducer } from "react";
 import { Stage } from "../style";
-import { ChoiceBox, ChoiceBoxWrapper, ButtonWrapper, MoveButton, Button, Process } from "../style/item";
+import { Process } from "../style/item";
 import ChoiceResult from "./tournament-result";
 import { Title } from "./tournament-title";
+import { List } from "./tournament-content";
+import ButtonType from "./tournament-button";
 
 function reducer(state, action){
     switch (action.type){
         case "previous":
+            if (state.indexList[state.indexList.length-1]) {
+                state.indexList.pop();
+            }
             return { count: state.count - 1,
-                indexList: state.indexList.splice(state.indexList.length -1),
-                active: true, answer: state.answer };
+                    indexList: state.indexList,
+                    active: true };        
         case "next":
-            return state.count === 0
-                ?{ count: state.count + 1, indexList: [], 
-                    active: false, answer: state.answer }
-                :{ count: state.count + 1, indexList: [...state.indexList, state.answer], 
-                    active: false, answer: state.answer };
+            state.indexList.push("");
+            return { count: state.count + 1, 
+                    indexList: state.indexList, 
+                    active: false };
         case "select":
-            return { count: state.count, indexList: state.indexList, 
-                active: true, answer: action.answer }
-    }
+            state.indexList.splice(state.indexList.length-1, 1, action.answer)
+            return { count: state.count,
+                    indexList: state.indexList, 
+                    active: true };
+    };
 }
 
 export default reducer;
 
 export const Choice = () => {
-    const [list, setList] = useState(["취향대로 추천"]);
-    const [next, setNext] = useState("다음으로");
     const [page, dispatch] = useReducer(reducer, { count: 0, indexList: [], active: false, answer: "" });
-
-    useEffect(() => {
-        switch (page.count) {
-            case 0:
-                setList(["취향대로 추천"]);
-                setNext("시작!");
-                break;
-            case 1:
-                setList(["가족들이랑 놀래", "친구들이나 애인이랑 놀래", "웨비들💛이랑 놀래"]);
-                setNext("다음으로");
-                break;
-            case 2:
-                setList(["맛있는 거 먹기", "크리스마스 분위기 느끼기", "신나게 놀기"]);
-                setNext("다음으로");
-                break;
-            case 3:
-                setList(["실내가 좋아", "실외가 좋아"]);
-                setNext("결과보기");
-                break;
-        }   
-    }, [page.count]);
-
-    function buttonType(num){
-        return num
-        ? <ButtonWrapper>
-            <MoveButton onClick={() => {dispatch({ type: "previous" })}}>
-                이전으로
-            </MoveButton>
-            <MoveButton onClick={() => {dispatch({ type: "next" })}} 
-            disabled={!page.active}>
-                {next}
-            </MoveButton>
-        </ButtonWrapper>
-        : <ButtonWrapper>
-            <Button onClick={() => {dispatch({ type: "next" })}}>
-                {next}
-            </Button>
-        </ButtonWrapper>
-    }
 
     return page.count === 4
     ? (<ChoiceResult indexList={page.indexList}></ChoiceResult>)
@@ -75,15 +40,9 @@ export const Choice = () => {
             <Process> 
                 {page.count? page.count+"/3" : ""}
             </Process>
-            <ChoiceBoxWrapper>
-            {list.map((item) => (
-                <ChoiceBox key={item} onClick={(e) => {dispatch({ type: "select", answer: e.target.innerText })}}
-                    className={ page.answer === item ? "active" : null}>
-                        {item}
-                </ChoiceBox>
-            ))}
-            </ChoiceBoxWrapper>
-            {buttonType(page.count)}
+            <List pageInfo={{count: page.count, answer: page.indexList[page.indexList.length-1], dispatch: dispatch}}></List>
+            <ButtonType pageInfo={{count: page.count, active: page.active, dispatch: dispatch}}></ButtonType>
+            {    console.log(page.indexList)   }
         </Stage>
     );
  }
