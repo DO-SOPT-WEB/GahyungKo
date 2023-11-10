@@ -4,9 +4,9 @@ import { RESULT_LIST } from "../assets/result-item";
 import { Choice } from "./tournament";
 import { useState } from "react";
 
-function ChoiceResult({page}) {
+function ChoiceResult(indexList) {
   const [initial, setInitial] = useState(false);
-  const { count, indexList: [firstIndex, secondIndex, thirdIndex] } = page;
+  const { indexList: [firstIndex, secondIndex, thirdIndex] } = indexList;
   
   const tempInfo = RESULT_LIST.filter(item => (
     item.firstIndex === firstIndex 
