@@ -9,9 +9,7 @@ import ButtonType from "./tournament-button";
 function reducer(state, action){
     switch (action.type){
         case "previous":
-            if (state.indexList[state.indexList.length-1]) {
                 state.indexList.pop();
-            }
             return { count: state.count - 1,
                     indexList: state.indexList,
                     active: true };        
@@ -31,7 +29,7 @@ function reducer(state, action){
 export default reducer;
 
 export const Choice = () => {
-    const [page, dispatch] = useReducer(reducer, { count: 0, indexList: [], active: false, answer: "" });
+    const [page, dispatch] = useReducer(reducer, { count: 0, indexList: [], active: false});
 
     return page.count === 4
     ? (<ChoiceResult indexList={page.indexList}></ChoiceResult>)
