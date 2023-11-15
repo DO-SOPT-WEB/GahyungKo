@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import SignUp from "../page/signup";
 import LogIn from "../page/login";
@@ -10,7 +9,7 @@ const Router = () => {
         <Routes>
             <Route path="/login" element={<LogIn />} />
             <Route path="/signup" element={<SignUp />} />
-            <Route path="/mypage" element={<MyPage />} />
+            <Route path="/mypage/:userId" element={<MyPage />} />
         </Routes>
       </BrowserRouter>
     );

@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Modal, Header, LoginInput, InputTitle, Input, Button, SignUpBtn, InputContainer } from "../styles";
+import { useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
     const [btnState, setBtnState] = useState(false);
