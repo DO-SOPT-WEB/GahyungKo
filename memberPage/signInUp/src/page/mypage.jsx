@@ -6,7 +6,7 @@ const MyPage = () => {
         <Modal>
             <Header>My Page</Header>
             <InfoContainer>
-                <Image src='../../public/icon.png'></Image> 
+                <Image src='../../public/icon.jpg'></Image> 
                 <InfoWrapper>
                     <Info>ID: </Info>
                     <Info>닉네임: </Info>
@@ -25,15 +25,16 @@ const InfoContainer = styled.section`
     
     display: flex;
     justify-content: space-around;
-    gap: 3rem;
+    gap: 2.5rem;
 `;
 
 const Image = styled.img`
-    height: 6rem;
-    width: 6rem;
+    height: 8rem;
+    width: 8rem;
 
     object-fit: cover;
     overflow: hidden;
+    border-radius: 50%;
 `;
 
 const InfoWrapper = styled.div`
@@ -44,7 +45,11 @@ const InfoWrapper = styled.div`
 `;
 
 const Info = styled.span`
+    height: 2.5rem;
     padding: 0.5rem;
+
+    display: flex;
+    align-items: center;
 
     background-color: lightgray;
     border-radius: 5px;

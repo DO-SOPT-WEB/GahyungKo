@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import { Modal, Header, LoginInput, Input, InputTitle, SignUpBtn, InputContainer } from "../styles";
-import { Outlet, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const LogIn = () => {
     const navigate = useNavigate();
 
     const handleLogin = () => {
-        navigate(`/mypage`);
+        navigate(`/mypage/${userID}`);
     };
 
     const handleSignup = () => {
@@ -16,7 +16,6 @@ const LogIn = () => {
     return (
         <Modal>
             <Header>Log In</Header>
-            <Outlet />
             <InputContainer>
                 <LoginInput>
                     <InputTitle>ID</InputTitle>

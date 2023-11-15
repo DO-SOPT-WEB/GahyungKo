@@ -63,6 +63,13 @@ export const Button = styled.button`
     color: white;
     font-size: 0.9rem;
     border-radius: 5px;
+
+    &.notExist{
+        background-color: green;
+    }
+    &.exist{
+        background-color: red;
+    }
 `;
 
 export const SignUpBtn = styled(Button)`
@@ -70,4 +77,10 @@ export const SignUpBtn = styled(Button)`
     width: 80%;
 
     font-size: 1rem;
+
+    &.inactive{
+        background-color: lightgray;
+        color: black;
+        cursor: not-allowed;
+    }
 `;
