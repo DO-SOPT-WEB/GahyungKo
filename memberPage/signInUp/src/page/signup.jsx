@@ -19,11 +19,11 @@ const SignUp = () => {
     useEffect(() => {
         if ( id && pw && checkPw && nickname 
             && checkPw === pw && exist === false) {
-          setBtnState(true);
+            setBtnState(true);
         }
         else
             setBtnState(false);
-      }, [id, pw, checkPw, nickname, exist],
+      }, [id, pw, checkPw, nickname, exist]
     );
 
     //아이디 이벤트 발생시 작동하는 함수

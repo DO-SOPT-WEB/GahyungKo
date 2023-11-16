@@ -1,18 +1,42 @@
 import styled from 'styled-components';
 import { Header, Button, Modal } from "../styles";
+import { useNavigate, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+
+import axios from 'axios';
 
 const MyPage = () => {
+    const params = useParams();
+    const navigate = useNavigate();
+
+    const [id, setId] = useState('');
+    const [name, setName] = useState('');
+
+    useEffect(()=>{
+        const loadData = async () => {
+            try {
+                const information = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/v1/members/${params.userId}`);
+                setId(information.data.username);
+                setName(information.data.nickname);
+            } catch (err) {
+                console.log(err);
+            }
+        };
+        
+        loadData();
+    }, [params.userId]);
+    
     return (
         <Modal>
             <Header>My Page</Header>
             <InfoContainer>
                 <Image src='../../public/icon.jpg'></Image> 
                 <InfoWrapper>
-                    <Info>ID: </Info>
-                    <Info>닉네임: </Info>
+                    <Info>ID: {id}</Info>
+                    <Info>닉네임: {name}</Info>
                 </InfoWrapper>
             </InfoContainer>
-            <Button>로그아웃</Button>
+            <Button onClick={()=>navigate(`/login`)}>로그아웃</Button>
         </Modal>
     );
 }
