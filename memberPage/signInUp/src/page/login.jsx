@@ -43,13 +43,13 @@ const LogIn = () => {
                         <InputTitle>ID</InputTitle>
                         <Input type="text" name="username" id="username"
                         placeholder="ID를 입력해주세요"
-                        onKeyUp={(e) => setId(e.target.value)}/>
+                        onChange={(e) => setId(e.target.value)}/>
                     </LoginInput>
                     <LoginInput>
                         <InputTitle>비밀번호</InputTitle>
                         <Input type="text" name="pw" id="pw"
                         placeholder="비밀번호를 입력해주세요"
-                        onKeyUp={(e) => setPw(e.target.value)}/>
+                        onChange={(e) => setPw(e.target.value)}/>
                     </LoginInput>
                 </InputContainer>
                 <LogInBtn onClick={handleLogin}>로그인</LogInBtn>

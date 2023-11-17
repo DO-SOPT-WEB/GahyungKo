@@ -6,7 +6,7 @@ import axios from 'axios';
 
 const SignUp = () => {
     const [btnState, setBtnState] = useState(false);
-    const [exist, setExist] = useState();
+    const [exist, setExist] = useState(null);
 
     const [id, setId] = useState('');
     const [pw, setPw] = useState('');
@@ -29,7 +29,7 @@ const SignUp = () => {
     //아이디 이벤트 발생시 작동하는 함수
     const idEvent = (event) => {
         setId(event.target.value); 
-        setExist(); 
+        setExist(null); 
         setBtnState(false);
     };
 
@@ -64,24 +64,24 @@ const SignUp = () => {
                 <LoginInput>
                     <InputTitle>ID</InputTitle>
                     <Input type="text" name='id' id='id'
-                    onKeyUp={(e) => {idEvent(e)}}/>
+                    onChange={(e) => {idEvent(e)}}/>
                     <Button className={exist === true ? "exist" : exist === false ? "notExist" : null }
                     type="button" onClick={idCheck}>중복체크</Button>
                 </LoginInput>
                 <LoginInput>
                     <InputTitle>비밀번호</InputTitle>
                     <Input type="text" name='password' id='password'
-                    onKeyUp={(e) => setPw(e.target.value)}/>
+                    onChange={(e) => setPw(e.target.value)}/>
                 </LoginInput>
                 <LoginInput>
                     <InputTitle>비밀번호 확인</InputTitle>
                     <Input type="text" name='pwCheck' id='pwCheck'
-                    onKeyUp={(e) => setCheckPw(e.target.value)}/>
+                    onChange={(e) => setCheckPw(e.target.value)}/>
                 </LoginInput>
                 <LoginInput>
                     <InputTitle>닉네임</InputTitle>
                     <Input type="text" name='name' id='name'
-                    onKeyUp={(e) => setNickname(e.target.value)}/>
+                    onChange={(e) => setNickname(e.target.value)}/>
                 </LoginInput>
             </InputContainer>  
             <SignUpBtn className={ btnState ? null : "inactive"}
