@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   Modal,
   Header,
@@ -25,11 +25,9 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   //회원 가입 버튼 활성화
-  useEffect(() => {
-    id && pw && checkPw && nickname && checkPw === pw && exist === false
-      ? setActiveSignUp(true)
-      : setActiveSignUp(false);
-  }, [id, pw, checkPw, nickname, exist]);
+  id && pw && checkPw && nickname && checkPw === pw && exist === false
+    ? setActiveSignUp(true)
+    : setActiveSignUp(false);
 
   //아이디 이벤트 발생시 작동하는 함수
   const idEvent = (event) => {
