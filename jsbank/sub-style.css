@@ -1,0 +1,147 @@
+@import "./reset.css";
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+
+:root{
+    /*color*/
+    --main-color: #bedaba;
+    --sub-color01: #F6F6F6;
+    --sub-color02: #fdcfcf;
+    --sub-color03: #f7f7e1;
+}
+
+html {
+    font-family: 'Gowun Dodum', sans-serif;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--main-color);
+    color: var(--sub-color01);
+
+    height: 10vh;
+    width: 100vw;
+}
+
+main{
+    height: 84vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+hr{
+    background-color: var(--sub-color01);
+    border: none;
+
+    width: 100vw;
+    height: .8vh;
+    margin-bottom: 0;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+h2{
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--sub-color01);
+}
+
+.category{
+    width: 70%;
+    height: 40%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+
+    background-color: var(--main-color);
+}
+
+.category_list{
+    display: flex;
+    gap: 0.5rem;
+
+    margin: 1rem 0;
+}
+
+.category_list li{
+    height: 1.5rem;
+    padding: 0 0.5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--sub-color02);
+    color: var(--sub-color01);
+    border-radius: 0.3rem;
+}
+
+.insert_category{
+    width: 52vw;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.insert_category label{
+    color: var(--sub-color01);
+}
+
+.insert_category input {
+    height: 2rem;
+
+    border: none;
+    background-color: var(--sub-color03);
+    border-radius: 0.8rem;
+}
+
+/*하단 버튼*/
+footer{
+    width: 100vw;
+    height: 6vh;
+
+    position: fixed;
+    bottom: 0;
+
+    background-color: var(--sub-color03);
+}
+
+.btn{
+    width: 4rem;
+    height: 100%;
+
+    border: none;
+    background-color: var(--sub-color02);
+    border-radius: 1rem;
+
+    object-fit: contain;
+
+    position: relative;
+}
+
+#home_btn{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
